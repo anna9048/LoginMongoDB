@@ -14,9 +14,13 @@ public class LoginService implements ILoginService {
 	@Autowired
 	private ILoginRepo loginRepo;
 
+	@Autowired
+	SequenceGeneratorService sequenceGeneratorService;
+	
 	@Override
 	public Login addLogin(Login login) {
 		// TODO Auto-generated method stub
+		login.setLogId(sequenceGeneratorService.generateSequence(login.SEQUENCE_NAME));
 		return loginRepo.save(login);
 	}
 

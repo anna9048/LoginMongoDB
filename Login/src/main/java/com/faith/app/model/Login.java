@@ -4,14 +4,18 @@ package com.faith.app.model;
 
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection="Login")
+@Document(collection="UserLogin")
 public class Login {
 
 	
 	@Id
 	private Integer logId;
+	
+	@Transient
+	public static final String SEQUENCE_NAME="loginsequence";
 	
 	private String username,password;
 	private Integer roleId;

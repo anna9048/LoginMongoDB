@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.faith.app.model.Login;
 import com.faith.app.service.ILoginService;
+import com.faith.app.service.SequenceGeneratorService;
 
 @RestController
 @RequestMapping("/")
@@ -20,10 +21,13 @@ public class LoginController {
 
 	@Autowired
 	ILoginService loginService;
+	
+	
 
 	@RequestMapping(value = "login", method = RequestMethod.POST)
 	public ResponseEntity<Login> addResource(@RequestBody Login login) {
 
+		
 		return new ResponseEntity<Login>(loginService.addLogin(login), HttpStatus.OK);
 
 	}
